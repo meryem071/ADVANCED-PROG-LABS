@@ -3,6 +3,7 @@ package tp01.q1;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 public class Createur<T> {
 
@@ -14,8 +15,11 @@ public class Createur<T> {
 
     public T creer() {
         try {
-            // TODO (Q2): create an instance using the default constructor.
-            throw new RuntimeException("TODO: implement me!");
+            if(clazz != null){
+                return clazz.getDeclaredConstructor().newInstance();
+                
+            }
+            throw new RuntimeException("clazz ne doit pas être nul");
         } catch (Exception e) {
             // Wrap any exception in an IntrospectionException.
             throw new IntrospectionException(e);
