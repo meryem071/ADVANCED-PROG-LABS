@@ -36,8 +36,15 @@ public class Createur<T> {
      * @param valeur the value to assign.
      */
     public void setProprieteTexte(T objet, String nomPropriete, String valeur) {
-        // TODO (Q3): find the String setter and invoke it.
-        throw new RuntimeException("TODO: implement me!");
+        String s = IntrospectionHelper.construireNomMethode("set", nomPropriete);
+        try{
+            Method res = clazz.getMethod(s, String.class);
+
+            res.invoke(objet,valeur);
+
+        }catch(Exception e ){
+            throw new IntrospectionException(e);
+        }
     }
 
     /**
