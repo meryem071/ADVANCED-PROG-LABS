@@ -17,7 +17,3 @@ Requires JDK 17+ and the `Extension Pack for Java`. Run tests with
 
 PDF slides live in [`lectures/`](lectures/) (uploaded separately).
 
-## For instructors
-
-`lab1-sol/` (reference solution) is intentionally **not committed** — see
-`.gitignore`. Keep it local, never push it to the student-facing repo.
