@@ -1,4 +1,4 @@
-# Lab 1 — SOLUTION (do not distribute to students)
+# Lab 1 — Proposed SOLUTION 
 
 English port of TP01 with reference solutions. Identical to `../lab1` except:
 `Createur.java` (Q2/Q3/Q4) and `Afficheur2.java` (Ex2) are implemented.
