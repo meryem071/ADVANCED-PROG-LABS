@@ -22,7 +22,26 @@ public class Afficheur2 {
     public String afficher(Object o) {
         // TODO (Ex2): copy Afficheur.afficher, but if the getter carries
         // @Label, display the label value instead of the property name.
-        throw new RuntimeException("TODO: implement me!");
+        try {
+            Class<? extends Object> clazz = o.getClass();
+            ArrayList<String> listeAAfficher = new ArrayList<>();
+            for (Method m : clazz.getMethods()) {
+                if (m.getName().startsWith("get") && m.getParameterCount() == 0 
+                && ! m.getName().equals("getClass")) {
+                    String nomPropriete = IntrospectionHelper.extraireNomDePropriete("get", m.getName());
+
+                    if(m.isAnnotationPresent(Label.class)){
+                        nomPropriete = m.getAnnotation(Label.class).value();
+                    }
+
+                    listeAAfficher.add(nomPropriete + " : " + m.invoke(o));
+                }
+            }
+            Collections.sort(listeAAfficher);
+            return String.join(" ; ", listeAAfficher);
+        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
