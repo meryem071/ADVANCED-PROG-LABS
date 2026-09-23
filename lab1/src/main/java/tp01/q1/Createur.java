@@ -3,7 +3,6 @@ package tp01.q1;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 
 public class Createur<T> {
 
@@ -57,8 +56,15 @@ public class Createur<T> {
      * @param valeur the value to assign.
      */
     public <V> void setPropriete(T objet, String nomPropriete, V valeur, Class<? super V> clazzPropriete) {
-        // TODO (Q4): same as above but with an explicit property type.
-        throw new RuntimeException("TODO: implement me!");
+        String s = IntrospectionHelper.construireNomMethode("set", nomPropriete);
+        try{
+            Method res = clazz.getMethod(s, clazzPropriete);
+
+            res.invoke(objet,valeur);
+
+        }catch(Exception e ){
+            throw new IntrospectionException(e);
+        }
     }
 
 }
