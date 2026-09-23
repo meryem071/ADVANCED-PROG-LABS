@@ -1,7 +1,8 @@
 # Instructor-only — never committed. Students must not see solutions.
-#lab1-sol
-# Also ignore the extracted reference copy if ever placed elsewhere:
-#**/*-sol/
+lab1-sol/
+lab2-sol/
+# Also ignore any future *-sol reference copy:
+**/*-sol/
 
 # Maven build output
 target/

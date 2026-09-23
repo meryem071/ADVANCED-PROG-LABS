@@ -8,12 +8,19 @@ own `README.md`, starter code, tests (`mvnw test`) and wrapper (`mvnw.cmd`).
 | Lab | Topic | Folder |
 | --- | --- | --- |
 | Lab 1 | Metaprogramming: introspection + annotations | [`lab1/`](lab1/) |
+| Lab 2 | Generics: generic classes, bounds, wildcards | [`lab2/`](lab2/) |
 
 Open the lab folder itself in VS Code (where `pom.xml` is), not this root.
-Requires JDK 17+ and the `Extension Pack for Java`. Run tests with
+Requires JDK 11+ (lab2) / 17+ (lab1) and the `Extension Pack for Java`. Run tests with
 `.\mvnw.cmd test` (Windows) or `./mvnw test` (Linux/Mac).
 
 ## Lectures
 
 PDF slides live in [`lectures/`](lectures/) (uploaded separately).
+
+## For instructors
+
+`lab1-sol/`, `lab2-sol/` (reference solutions) are intentionally **not
+committed** — see `.gitignore`. Keep them local, never push them to the
+student-facing repo.
 
