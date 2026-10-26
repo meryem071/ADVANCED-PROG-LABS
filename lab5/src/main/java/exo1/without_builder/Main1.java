@@ -1,9 +1,6 @@
 package exo1.without_builder;
 
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpResponse;
-import java.util.HashMap;
+
 import java.util.Map;
 
 public class Main1 {
