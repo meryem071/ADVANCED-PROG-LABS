@@ -113,6 +113,4 @@ class HttpRequest {
 	            "  timeoutMs=" + timeoutMs + "\n" +
 	            "}";
 	}
-	
-	
 }
