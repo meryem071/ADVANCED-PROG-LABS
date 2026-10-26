@@ -20,6 +20,13 @@ public class Main1 {
 		System.out.println(getRequest);
 		System.out.println(postRequest);
 
+		try{
+			valider(postRequest);
+			System.out.println("requête valide");
+		}catch(IllegalArgumentException e){
+			System.out.println("requete refusee : " + e.getMessage());
+		}
+		
 	}
 
 	// Commentaire : le constructeur à 9 paramètres est peu lisible. On ne sait pas
@@ -29,5 +36,29 @@ public class Main1 {
 	// renseigner, même ce qui est inutile (body pour un GET), et rien ne vérifie
 	// la cohérence (un POST avec Content-Type mais sans body passe sans problème).
 		
+	public static void valider(HttpRequest r){
+
+		if (r.getMethod().equals("GET") && r.getBody() != null) {
+    		throw new IllegalArgumentException("Un GET ne peut pas avoir de body");
+		}	
+		
+		//ici on peut rajouter r.getHost().isBlank() au cas où c'est " "
+		if(r.getHost() == null){
+			throw new IllegalArgumentException("Host ne peut pas être null");
+		}
+
+		if(r.isKeepAlive() && r.isFollowRedirects()){
+			throw new IllegalArgumentException("keepAlive et followRedirects ne peuvent pas être true tous les 2");
+
+		}
+	}
+
+	// Pourquoi cette approche est difficile à maintenir :
+	// - la validation est séparée de la construction : rien n'oblige à appeler
+	//   valider() après new HttpRequest(...), une requête incohérente peut exister.
+	// - les règles sont dans Main1, pas dans la classe : une autre classe qui crée
+	//   une HttpRequest ne les applique pas.
+	// - chaque nouvelle règle ou nouvelle option oblige à modifier valider() et à
+	//   penser à l'appeler partout.
 
 }
